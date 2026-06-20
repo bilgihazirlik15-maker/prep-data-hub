@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive pass and fail rates dashboard">
+  <title>Pass–Fail Rates | Prep Data Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-page">
+  <header class="site-header dashboard-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>
+        <strong>Prep Data Hub</strong>
+        <small>English Preparatory Program</small>
+      </span>
+    </a>
+    <a class="back-link" href="index.html"><span>←</span> Back to home</a>
+  </header>
+
+  <main class="dashboard-shell">
+    <section class="dashboard-title">
+      <div>
+        <p class="eyebrow">Student outcomes</p>
+        <h1>Pass–Fail Rates</h1>
+        <p>Explore how student outcomes change across cohorts and levels.</p>
+      </div>
+      <div class="data-badge">
+        <span>DATA COVERAGE</span>
+        <strong id="coverageLabel">—</strong>
+      </div>
+    </section>
+
+    <section class="filter-panel" aria-label="Dashboard filters">
+      <div class="filter-heading">
+        <div>
+          <span class="filter-icon">⌁</span>
+          <strong>Filter the data</strong>
+        </div>
+        <button id="resetFilters" type="button">Reset all</button>
+      </div>
+      <div class="filter-grid">
+        <label>
+          <span>Academic Year</span>
+          <select id="academicYearFilter"></select>
+        </label>
+        <label>
+          <span>Term</span>
+          <select id="termFilter"></select>
+        </label>
+        <label>
+          <span>Type of Students</span>
+          <select id="studentTypeFilter"></select>
+        </label>
+        <label>
+          <span>Level</span>
+          <select id="levelFilter"></select>
+        </label>
+        <label>
+          <span>Minimum Students</span>
+          <input id="studentMinimum" type="number" min="0" value="0" inputmode="numeric">
+        </label>
+        <label>
+          <span>Minimum Pass Rate</span>
+          <div class="range-wrap">
+            <input id="rateMinimum" type="range" min="0" max="100" step="1" value="0">
+            <output id="rateMinimumOutput">0%</output>
+          </div>
+        </label>
+      </div>
+    </section>
+
+    <section class="kpi-grid" aria-label="Summary metrics">
+      <article class="kpi-card accent-dark">
+        <div class="kpi-top"><span>Total students</span><i>∑</i></div>
+        <strong id="totalStudents">—</strong>
+        <small id="recordCount">— records</small>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-top"><span>Pass students</span><i class="success-dot"></i></div>
+        <strong id="passStudents">—</strong>
+        <small id="passShare">— of total</small>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-top"><span>Fail students</span><i class="fail-dot"></i></div>
+        <strong id="failStudents">—</strong>
+        <small id="failShare">— of total</small>
+      </article>
+      <article class="kpi-card accent-rate">
+        <div class="kpi-top"><span>Pass success rate</span><i>↗</i></div>
+        <strong id="passRate">—</strong>
+        <small>Weighted by student count</small>
+      </article>
+    </section>
+
+    <section class="chart-grid">
+      <article class="panel chart-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">Performance comparison</p>
+            <h2>Success rate by <span id="dimensionTitle">level</span></h2>
+          </div>
+          <select id="dimensionSelect" aria-label="Chart breakdown">
+            <option value="Level">Level</option>
+            <option value="Type of Students">Type of Students</option>
+            <option value="Academic Year">Academic Year</option>
+            <option value="Term">Term</option>
+          </select>
+        </div>
+        <div id="barChart" class="bar-chart" role="img" aria-label="Pass rate bar chart"></div>
+      </article>
+
+      <article class="panel donut-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">Outcome composition</p>
+            <h2>Pass vs. fail</h2>
+          </div>
+        </div>
+        <div class="donut-wrap">
+          <div id="donutChart" class="donut-chart">
+            <div class="donut-center">
+              <strong id="donutRate">—</strong>
+              <span>pass rate</span>
+            </div>
+          </div>
+          <div class="legend">
+            <div><i class="legend-pass"></i><span>Pass</span><strong id="legendPass">—</strong></div>
+            <div><i class="legend-fail"></i><span>Fail</span><strong id="legendFail">—</strong></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel table-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="panel-kicker">Detailed records</p>
+          <h2>Filtered data</h2>
+        </div>
+        <span id="tableCount" class="table-count">— rows</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Academic Year</th>
+              <th>Term</th>
+              <th>Type of Students</th>
+              <th>Level</th>
+              <th class="numeric">Number of Sts</th>
+              <th class="numeric">Pass Sts</th>
+              <th class="numeric">Fail Sts</th>
+              <th class="numeric">Pass Success Rate</th>
+            </tr>
+          </thead>
+          <tbody id="dataTableBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyState" class="empty-state" hidden>
+        <strong>No records match these filters.</strong>
+        <span>Try widening your selection or resetting all filters.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer dashboard-footer">
+    <span>Source: Pass_Fail_Rates_Raw.xlsx</span>
+    <span>Prep Data Hub · 2026</span>
+  </footer>
+
+  <script src="data/pass-fail-data.js?v=1"></script>
+  <script src="dashboard.js?v=2"></script>
+</body>
+</html>

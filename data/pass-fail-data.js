@@ -1,0 +1,20 @@
+window.PASS_FAIL_DATA = [
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"Regular","Level":"Level 1","Number of Sts":375,"Pass Sts":272,"Fail Sts":103,"Pass Success Rate":0.7253333333},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"Regular","Level":"Level 2","Number of Sts":462,"Pass Sts":372,"Fail Sts":90,"Pass Success Rate":0.8051948052},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"Regular","Level":"Level 3","Number of Sts":373,"Pass Sts":314,"Fail Sts":59,"Pass Success Rate":0.8418230563},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"Regular","Level":"Level 4","Number of Sts":190,"Pass Sts":161,"Fail Sts":29,"Pass Success Rate":0.8473684211},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"Regular","Level":"Level 5","Number of Sts":null,"Pass Sts":null,"Fail Sts":null,"Pass Success Rate":null},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"2nd Year Students","Level":"Level 1","Number of Sts":22,"Pass Sts":5,"Fail Sts":17,"Pass Success Rate":0.2272727273},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"2nd Year Students","Level":"Level 2","Number of Sts":40,"Pass Sts":14,"Fail Sts":26,"Pass Success Rate":0.35},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"2nd Year Students","Level":"Level 3","Number of Sts":78,"Pass Sts":11,"Fail Sts":67,"Pass Success Rate":0.141025641},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"2nd Year Students","Level":"Level 4","Number of Sts":97,"Pass Sts":30,"Fail Sts":67,"Pass Success Rate":0.3092783505},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"2nd Year Students","Level":"Level 5","Number of Sts":null,"Pass Sts":null,"Fail Sts":null,"Pass Success Rate":null},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"BOTH","Level":"Level 1","Number of Sts":397,"Pass Sts":277,"Fail Sts":120,"Pass Success Rate":0.6977329975},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"BOTH","Level":"Level 2","Number of Sts":502,"Pass Sts":386,"Fail Sts":116,"Pass Success Rate":0.7689243028},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"BOTH","Level":"Level 3","Number of Sts":451,"Pass Sts":325,"Fail Sts":126,"Pass Success Rate":0.7206208426},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"BOTH","Level":"Level 4","Number of Sts":287,"Pass Sts":191,"Fail Sts":96,"Pass Success Rate":0.6655052265},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"BOTH","Level":"Level 5","Number of Sts":null,"Pass Sts":null,"Fail Sts":null,"Pass Success Rate":null},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"Regular","Level":"ALL","Number of Sts":1400,"Pass Sts":1119,"Fail Sts":281,"Pass Success Rate":0.7992857143},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"2nd Year Students","Level":"ALL","Number of Sts":237,"Pass Sts":60,"Fail Sts":177,"Pass Success Rate":0.2531645569},
+  {"Academic Year":"2021-2022","Term":"Term 1","Type of Students":"BOTH","Level":"ALL","Number of Sts":1637,"Pass Sts":1179,"Fail Sts":458,"Pass Success Rate":0.7202199145}
+];
