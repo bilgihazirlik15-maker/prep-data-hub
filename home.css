@@ -70,10 +70,10 @@ a { color: inherit; text-decoration: none; }
 }
 .report-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 13px; }
 .report-card {
-  --card-bg: #ff4f9a;
-  --card-ink: #54204f;
-  --card-accent: #ffe45e;
-  --card-orb: #ff8bc1;
+  --card-bg: #8f5364;
+  --card-ink: #fff3e8;
+  --card-accent: #d8a9b3;
+  --card-orb: #a96d7d;
   min-height: 208px;
   position: relative;
   display: flex;
@@ -86,13 +86,13 @@ a { color: inherit; text-decoration: none; }
   background: var(--card-bg);
   box-shadow: 0 5px 18px rgba(67,36,95,.08);
 }
-.report-card:nth-child(2) { --card-bg: #24d6c8; --card-ink: #263f74; --card-accent: #ff6b94; --card-orb: #85f4df; }
-.report-card:nth-child(3) { --card-bg: #ffe45e; --card-ink: #71396f; --card-accent: #ff5c8a; --card-orb: #ffef9c; }
-.report-card:nth-child(4) { --card-bg: #ff845f; --card-ink: #5f286e; --card-accent: #4de2d0; --card-orb: #ffb09a; }
-.report-card:nth-child(5) { --card-bg: #a879ef; --card-ink: #fff7d6; --card-accent: #ffe45e; --card-orb: #cfadff; }
-.report-card:nth-child(6) { --card-bg: #b9e94b; --card-ink: #4e2b72; --card-accent: #f14f9b; --card-orb: #d9f58e; }
-.report-card:nth-child(7) { --card-bg: #ff8fca; --card-ink: #4d327a; --card-accent: #37d9c7; --card-orb: #ffc0df; }
-.report-card:nth-child(8) { --card-bg: #587de8; --card-ink: #fff4bd; --card-accent: #ff719f; --card-orb: #88a4f3; }
+.report-card:nth-child(2) { --card-bg: #4f7475; --card-ink: #f4eee1; --card-accent: #a8c4be; --card-orb: #668d8b; }
+.report-card:nth-child(3) { --card-bg: #8a7442; --card-ink: #fff5dc; --card-accent: #d5c18b; --card-orb: #a18a55; }
+.report-card:nth-child(4) { --card-bg: #9a5f4c; --card-ink: #fff0e3; --card-accent: #d5a18c; --card-orb: #b67560; }
+.report-card:nth-child(5) { --card-bg: #695474; --card-ink: #f8edf2; --card-accent: #b9a1bd; --card-orb: #80668a; }
+.report-card:nth-child(6) { --card-bg: #66765b; --card-ink: #f5f0df; --card-accent: #b4c09e; --card-orb: #7d8c70; }
+.report-card:nth-child(7) { --card-bg: #875f78; --card-ink: #fff0ee; --card-accent: #c9a6b5; --card-orb: #9e748d; }
+.report-card:nth-child(8) { --card-bg: #536987; --card-ink: #f3eee5; --card-accent: #9eafc1; --card-orb: #687e9a; }
 .report-card::before {
   content: "";
   position: absolute;
