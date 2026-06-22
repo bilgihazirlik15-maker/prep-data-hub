@@ -3,95 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="English Preparatory Program data dashboard">
-  <title>Prep Data Hub</title>
+  <meta name="description" content="İstanbul Bilgi University English Preparatory Program data hub">
+  <title>Prep Data Hub | İstanbul Bilgi University</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
 </head>
-<body class="home-page">
+<body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Prep Data Hub home">
-      <span class="brand-mark">P</span>
-      <span>
-        <strong>Prep Data Hub</strong>
-        <small>English Preparatory Program</small>
-      </span>
+    <a class="university-brand" href="index.html" aria-label="Prep Data Hub home">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/%C4%B0stanbul_Bilgi_%C3%9Cniversitesi_logo.svg" alt="İstanbul Bilgi Üniversitesi">
     </a>
-    <span class="status-pill"><i></i> Institutional data</span>
+    <span class="program-label">English Preparatory Program</span>
   </header>
 
   <main>
     <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Academic intelligence, made useful</p>
-        <h1>See the story behind<br><em>student outcomes.</em></h1>
-        <p class="hero-text">A focused reporting space for exploring performance, progression and program trends—without wrestling with spreadsheets.</p>
-        <a class="primary-button" href="pass-fail.html">
-          Explore pass–fail rates
-          <span aria-hidden="true">↗</span>
-        </a>
+      <div class="hero-image" role="img" aria-label="İstanbul Bilgi University campus">
+        <img src="https://www.bilgi.edu.tr/media/uploads/2018/01/11/kustepe_kampus_01.jpg" alt="Students at the İstanbul Bilgi University Kuştepe campus">
       </div>
 
-      <div class="hero-visual" aria-label="Abstract data visualization">
-        <div class="orb orb-one"></div>
-        <div class="orb orb-two"></div>
-        <div class="visual-card visual-card-main">
-          <div class="mini-label">PASS RATE</div>
-          <div class="visual-rate">72.0<small>%</small></div>
-          <div class="spark-bars" aria-hidden="true">
-            <i style="height:42%"></i><i style="height:58%"></i><i style="height:52%"></i>
-            <i style="height:76%"></i><i style="height:65%"></i><i style="height:88%"></i>
-          </div>
-        </div>
-        <div class="visual-card visual-card-side">
-          <span>Students</span>
-          <strong>1,637</strong>
-          <small>Term 1 · All levels</small>
-        </div>
+      <div class="hero-copy">
+        <p class="eyebrow">Prep Data Hub</p>
+        <h1>Program data,<br><span>clearly presented.</span></h1>
+        <p class="hero-text">A simple, growing collection of reports for exploring student outcomes, progression and key trends across the English Preparatory Program.</p>
+        <a class="hero-link" href="#reports">Browse the reports <span aria-hidden="true">↓</span></a>
       </div>
     </section>
 
-    <section class="reports-section">
+    <section class="reports-section" id="reports">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">Available reports</p>
-          <h2>Start with a question.</h2>
-        </div>
-        <p>Each report turns raw institutional data into an interactive, filterable view.</p>
+        <div><p class="eyebrow">Data collections</p><h2>Choose a report</h2></div>
+        <p>Open an available report or preview the spaces reserved for upcoming datasets.</p>
       </div>
 
       <div class="report-grid">
         <a class="report-card featured" href="pass-fail.html">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9m7 10V5m7 14v-7"/></svg>
-          </div>
-          <div class="card-content">
-            <span class="card-number">01</span>
-            <h3>Pass–Fail Rates</h3>
-            <p>Compare success rates across academic years, terms, student types and proficiency levels.</p>
-          </div>
-          <span class="card-arrow">→</span>
+          <span class="card-number">01</span>
+          <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V9m7 10V5m7 14v-7"/></svg></span>
+          <div class="card-copy"><span class="available-label"><i></i> Available now</span><h3>Explore Pass–Fail Rates</h3><p>Compare student success across academic years, terms, student types and proficiency levels.</p></div>
+          <span class="card-arrow" aria-hidden="true">↗</span>
         </a>
-
-        <article class="report-card muted">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M7 16l3-4 3 2 4-6"/></svg>
-          </div>
-          <div class="card-content">
-            <span class="card-number">Coming next</span>
-            <h3>More reports</h3>
-            <p>The dashboard structure is ready to grow with additional institutional datasets.</p>
-          </div>
-        </article>
+        <article class="report-card placeholder"><span class="card-number">02</span><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18h16M6 15l4-5 3 3 5-7"/></svg></span><div class="card-copy"><span class="soon-label">Coming soon</span><h3>Data Set 2</h3><p>A new program report will be added here.</p></div></article>
+        <article class="report-card placeholder"><span class="card-number">03</span><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 5v7l5 3"/></svg></span><div class="card-copy"><span class="soon-label">Coming soon</span><h3>Data Set 3</h3><p>A new program report will be added here.</p></div></article>
+        <article class="report-card placeholder"><span class="card-number">04</span><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 6h14M5 12h9M5 18h6"/></svg></span><div class="card-copy"><span class="soon-label">Coming soon</span><h3>Data Set 4</h3><p>A new program report will be added here.</p></div></article>
+        <article class="report-card placeholder"><span class="card-number">05</span><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V8l7-3 7 3v11M9 19v-5h6v5"/></svg></span><div class="card-copy"><span class="soon-label">Coming soon</span><h3>Data Set 5</h3><p>A new program report will be added here.</p></div></article>
+        <article class="report-card placeholder"><span class="card-number">06</span><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18V9m5 9V6m5 12v-4"/></svg></span><div class="card-copy"><span class="soon-label">Coming soon</span><h3>Data Set 6</h3><p>A new program report will be added here.</p></div></article>
+        <article class="report-card placeholder"><span class="card-number">07</span><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></svg></span><div class="card-copy"><span class="soon-label">Coming soon</span><h3>Data Set 7</h3><p>A new program report will be added here.</p></div></article>
+        <article class="report-card placeholder"><span class="card-number">08</span><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5h14v14H5zM5 10h14M10 5v14"/></svg></span><div class="card-copy"><span class="soon-label">Coming soon</span><h3>Data Set 8</h3><p>A new program report will be added here.</p></div></article>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <span>English Preparatory Program</span>
-    <span>Data-informed decisions · 2026</span>
-  </footer>
+  <footer class="site-footer"><span>İstanbul Bilgi University · English Preparatory Program</span><span>Data-informed decisions · 2026</span></footer>
 </body>
 </html>
