@@ -14,8 +14,10 @@
 
   dimensions.forEach(key => {
     const select = filterMap[key];
-    select.innerHTML = `<option value="">All ${key === "Type of Students" ? "student types" : key.toLowerCase() + "s"}</option>`;
-    unique(key).forEach(value => select.add(new Option(value, value)));
+    const allLabel = key === "Type of Students" ? "All Student Types" : `All ${key.toLowerCase()}s`;
+    const values = unique(key).filter(value => key !== "Type of Students" || value !== "BOTH");
+    select.innerHTML = `<option value="">${allLabel}</option>`;
+    values.forEach(value => select.add(new Option(value, value)));
   });
 
   const years = unique("Academic Year");
