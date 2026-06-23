@@ -1,0 +1,14 @@
+body,
+body.dashboard-page {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(246, 244, 241, .84), rgba(246, 244, 241, .91)),
+    url("https://www.bilgi.edu.tr/media/uploads/2018/01/11/kustepe_kampus_03.jpg") center / cover fixed no-repeat;
+}
+
+@media (max-width: 740px) {
+  body,
+  body.dashboard-page {
+    background-attachment: scroll;
+  }
+}
