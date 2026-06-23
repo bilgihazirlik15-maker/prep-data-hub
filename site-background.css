@@ -6,9 +6,47 @@ body.dashboard-page {
     url("https://www.bilgi.edu.tr/media/uploads/2018/01/11/kustepe_kampus_03.jpg") center / cover fixed no-repeat;
 }
 
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(67, 36, 95, .18);
+  border-radius: 999px;
+  color: #675a75;
+  background: rgba(255, 255, 255, .62);
+  backdrop-filter: blur(8px);
+  font-size: 11px;
+  font-weight: 600;
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.back-link span {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.back-link:hover {
+  color: #43245f;
+  background: rgba(255, 255, 255, .84);
+  border-color: rgba(67, 36, 95, .3);
+  transform: translateY(-1px);
+}
+
 @media (max-width: 740px) {
   body,
   body.dashboard-page {
     background-attachment: scroll;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-link {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .back-link span {
+    font-size: 15px;
   }
 }
