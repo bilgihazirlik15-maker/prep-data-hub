@@ -1,0 +1,61 @@
+.table-panel {
+  padding: 0;
+}
+
+.table-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background-color .2s ease;
+}
+
+.table-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.table-toggle:hover {
+  background: rgba(244, 246, 242, .72);
+}
+
+.table-toggle:focus-visible {
+  outline: 2px solid var(--mint-deep);
+  outline-offset: -3px;
+}
+
+.table-toggle-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.table-toggle-icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ink);
+  background: #eef3ed;
+  font-size: 15px;
+  transition: transform .25s ease, background-color .2s ease;
+}
+
+.table-panel[open] .table-toggle-icon {
+  transform: rotate(180deg);
+  background: var(--mint);
+}
+
+.table-content {
+  border-top: 1px solid #edf0eb;
+}
+
+@media (max-width: 480px) {
+  .table-toggle {
+    padding: 19px 20px;
+  }
+}
