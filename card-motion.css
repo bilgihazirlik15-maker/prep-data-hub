@@ -1,0 +1,129 @@
+.report-card {
+  animation: card-rise .72s cubic-bezier(.16, 1, .3, 1) both, card-breathe 7s ease-in-out infinite;
+  animation-delay: calc((var(--card-index, 1) - 1) * 70ms), calc(1.2s + (var(--card-index, 1) - 1) * 210ms);
+  transform-origin: 50% 70%;
+  will-change: transform, box-shadow, filter;
+}
+
+.report-card:nth-child(1) { --card-index: 1; }
+.report-card:nth-child(2) { --card-index: 2; }
+.report-card:nth-child(3) { --card-index: 3; }
+.report-card:nth-child(4) { --card-index: 4; }
+.report-card:nth-child(5) { --card-index: 5; }
+.report-card:nth-child(6) { --card-index: 6; }
+.report-card:nth-child(7) { --card-index: 7; }
+.report-card:nth-child(8) { --card-index: 8; }
+
+.report-card:nth-child(2n) {
+  animation-name: card-rise, card-breathe-alt;
+}
+
+.report-card::before {
+  animation: orb-drift 8.5s ease-in-out infinite;
+  animation-delay: calc((var(--card-index, 1) - 1) * 180ms);
+}
+
+.report-card::after {
+  animation: soft-sheen 8s ease-in-out infinite;
+  animation-delay: calc(2s + (var(--card-index, 1) - 1) * 260ms);
+}
+
+.card-icon {
+  animation: icon-float 4.8s ease-in-out infinite;
+  animation-delay: calc(.6s + (var(--card-index, 1) - 1) * 180ms);
+}
+
+.card-number {
+  animation: number-pulse 5.8s ease-in-out infinite;
+  animation-delay: calc(1s + (var(--card-index, 1) - 1) * 160ms);
+}
+
+.report-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-11px) scale(1.025) rotate(var(--tilt, -.35deg));
+}
+
+.report-card:nth-child(2n):hover { --tilt: .35deg; }
+.report-card:nth-child(3n):hover { --tilt: -.55deg; }
+
+.report-card:hover::before,
+.report-card:hover::after,
+.report-card:hover .card-icon,
+.report-card:hover .card-number {
+  animation-play-state: paused;
+}
+
+.report-card:not(.featured) .card-copy::after {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 3px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: .26;
+  transform: scaleX(.58);
+  transform-origin: left;
+  transition: transform .3s cubic-bezier(.16,1,.3,1), opacity .3s ease;
+}
+
+.report-card:hover .card-copy::after {
+  transform: scaleX(1);
+  opacity: .5;
+}
+
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes card-breathe {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-.22deg); }
+}
+
+@keyframes card-breathe-alt {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(4px) rotate(.2deg); }
+}
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate(-2px, 0) scale(.86); }
+  50% { transform: translate(-18px, 18px) scale(1.08); }
+}
+
+@keyframes soft-sheen {
+  0%, 68%, 100% { opacity: 0; transform: translateX(-30%) rotate(8deg); }
+  78% { opacity: .44; }
+  90% { opacity: 0; transform: translateX(30%) rotate(8deg); }
+}
+
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(-2deg); }
+}
+
+@keyframes number-pulse {
+  0%, 100% { opacity: .6; }
+  50% { opacity: .95; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .report-card,
+  .report-card::before,
+  .report-card::after,
+  .card-icon,
+  .card-number {
+    animation: none;
+  }
+
+  .report-card:hover {
+    transform: none;
+  }
+}
