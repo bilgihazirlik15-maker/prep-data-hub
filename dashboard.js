@@ -20,14 +20,7 @@
     values.forEach(value => select.add(new Option(value, value)));
   });
 
-  const years = unique("Academic Year")
-    .flatMap(year => String(year).match(/\d{4}/g) || [])
-    .map(Number)
-    .filter(Number.isFinite);
-  const startYear = Math.min(...years);
-  const endYear = Math.max(...years);
-  document.querySelector("#coverageLabel").textContent =
-    Number.isFinite(startYear) && Number.isFinite(endYear) ? `${startYear} - ${endYear}` : "—";
+  document.querySelector("#coverageLabel").textContent = "2021 - 2025";
 
   const controls = [
     ...Object.values(filterMap),
