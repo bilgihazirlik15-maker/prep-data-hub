@@ -1,11 +1,12 @@
 .report-card {
-  animation: card-arrive .62s cubic-bezier(.16, 1, .3, 1) both;
-  animation-delay: calc((var(--card-index, 1) - 1) * 65ms);
-  transform-origin: 50% 80%;
+  --card-index: 1;
+  animation: card-pop-in .7s cubic-bezier(.19, 1, .22, 1) both;
+  animation-delay: calc((var(--card-index) - 1) * 58ms);
+  transform-origin: 50% 86%;
   transition:
-    transform .28s cubic-bezier(.16, 1, .3, 1),
-    box-shadow .28s ease,
-    filter .28s ease;
+    transform .34s cubic-bezier(.2, .8, .2, 1),
+    box-shadow .34s ease,
+    filter .34s ease;
   will-change: transform, box-shadow, filter;
 }
 
@@ -24,98 +25,118 @@
 .card-number,
 .card-arrow,
 .report-card h2,
-.report-card p {
+.report-card p,
+.report-card .soon-label,
+.report-card .available-label {
   transition:
-    transform .28s cubic-bezier(.16, 1, .3, 1),
-    opacity .28s ease,
-    filter .28s ease;
+    transform .34s cubic-bezier(.2, .8, .2, 1),
+    opacity .34s ease,
+    filter .34s ease;
 }
 
 .report-card::after {
   opacity: 0;
-  transform: translateX(-42%) rotate(10deg);
+  transform: translateX(-55%) rotate(11deg) scaleY(1.25);
 }
 
 .report-card:hover {
-  transform: translateY(-10px) scale(1.018);
-  filter: saturate(1.08);
+  transform: translateY(-12px) scale(1.022) rotate(var(--hover-tilt, -.22deg));
+  filter: saturate(1.12) contrast(1.02);
 }
 
+.report-card:nth-child(2n):hover { --hover-tilt: .22deg; }
+.report-card:nth-child(3n):hover { --hover-tilt: -.38deg; }
+
 .report-card:hover::before {
-  transform: translate(-12px, 10px) scale(1.08);
+  transform: translate(-15px, 12px) scale(1.16);
+  filter: blur(.2px) saturate(1.16);
 }
 
 .report-card:hover::after {
-  opacity: .45;
-  transform: translateX(28%) rotate(10deg);
+  opacity: .5;
+  transform: translateX(38%) rotate(11deg) scaleY(1.25);
 }
 
 .report-card:hover .card-icon {
-  transform: translateY(-5px) rotate(-4deg) scale(1.08);
+  animation: icon-spark .5s cubic-bezier(.2, .8, .2, 1) both;
 }
 
 .report-card:hover .card-number {
-  transform: translateY(-3px);
-  opacity: .9;
+  transform: translateY(-4px) scale(1.04);
+  opacity: .95;
 }
 
 .report-card:hover .card-arrow {
-  transform: translate(4px, -4px) rotate(6deg);
+  transform: translate(6px, -6px) rotate(8deg) scale(1.08);
 }
 
 .report-card:hover h2 {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .report-card:hover p {
-  transform: translateY(2px);
+  transform: translateY(3px);
+}
+
+.report-card:hover .soon-label,
+.report-card:hover .available-label {
+  transform: translateY(-2px);
 }
 
 .report-card:not(.featured) .card-copy::after {
   content: "";
   display: block;
-  width: 34px;
+  width: 42px;
   height: 3px;
-  margin-top: 12px;
+  margin-top: 13px;
   border-radius: 999px;
   background: currentColor;
-  opacity: .24;
-  transform: scaleX(.55);
+  opacity: .22;
+  transform: scaleX(.34);
   transform-origin: left;
-  transition: transform .28s cubic-bezier(.16, 1, .3, 1), opacity .28s ease;
+  transition:
+    transform .34s cubic-bezier(.2, .8, .2, 1),
+    opacity .34s ease;
 }
 
 .report-card:hover .card-copy::after {
   transform: scaleX(1);
-  opacity: .5;
+  opacity: .55;
 }
 
 .report-card.featured .available-label i {
-  animation: status-dot 1.8s ease-in-out infinite;
+  animation: status-ping 2s ease-in-out infinite;
 }
 
-@keyframes card-arrive {
-  from {
+@keyframes card-pop-in {
+  0% {
     opacity: 0;
-    transform: translateY(16px) scale(.97);
+    transform: translateY(20px) scale(.94);
   }
-  to {
+  72% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.01);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-@keyframes status-dot {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, .34);
-  }
-  50% {
-    box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
-  }
+@keyframes icon-spark {
+  0% { transform: translateY(0) rotate(0deg) scale(1); }
+  48% { transform: translateY(-9px) rotate(-8deg) scale(1.13); }
+  100% { transform: translateY(-5px) rotate(-4deg) scale(1.07); }
+}
+
+@keyframes status-ping {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, .36); }
+  50% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .report-card,
+  .report-card:hover .card-icon,
   .report-card.featured .available-label i {
     animation: none;
   }
@@ -128,6 +149,8 @@
   .card-arrow,
   .report-card h2,
   .report-card p,
+  .report-card .soon-label,
+  .report-card .available-label,
   .report-card:not(.featured) .card-copy::after {
     transition: none;
   }
@@ -139,7 +162,9 @@
   .report-card:hover .card-number,
   .report-card:hover .card-arrow,
   .report-card:hover h2,
-  .report-card:hover p {
+  .report-card:hover p,
+  .report-card:hover .soon-label,
+  .report-card:hover .available-label {
     transform: none;
   }
 }
