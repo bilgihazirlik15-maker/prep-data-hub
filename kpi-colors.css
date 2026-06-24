@@ -1,0 +1,85 @@
+.kpi-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  top: -42px;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  opacity: .34;
+  pointer-events: none;
+}
+
+.kpi-card.kpi-total {
+  color: #17324a;
+  border-color: #c9dcf2;
+  background: linear-gradient(135deg, #eef6ff, #dfeeff);
+}
+
+.kpi-card.kpi-total::after {
+  background: #9fc5f4;
+}
+
+.kpi-card.kpi-total .kpi-top,
+.kpi-card.kpi-total > small {
+  color: rgba(23, 50, 74, .68);
+}
+
+.kpi-card.kpi-pass {
+  color: #164b37;
+  border-color: #bfe6d1;
+  background: linear-gradient(135deg, #effbf4, #d9f3e4);
+}
+
+.kpi-card.kpi-pass::after {
+  background: #99ddb8;
+}
+
+.kpi-card.kpi-pass .kpi-top,
+.kpi-card.kpi-pass > small {
+  color: rgba(22, 75, 55, .68);
+}
+
+.kpi-card.kpi-fail {
+  color: #74302b;
+  border-color: #f1c6bf;
+  background: linear-gradient(135deg, #fff2f0, #f8d8d3);
+}
+
+.kpi-card.kpi-fail::after {
+  background: #f0a39a;
+}
+
+.kpi-card.kpi-fail .kpi-top,
+.kpi-card.kpi-fail > small {
+  color: rgba(116, 48, 43, .7);
+}
+
+.kpi-card.kpi-rate {
+  color: #46385d;
+  border-color: #d9cef0;
+  background: linear-gradient(135deg, #f7f2ff, #eadfff);
+}
+
+.kpi-card.kpi-rate::after {
+  background: #c7b4ef;
+}
+
+.kpi-card.kpi-rate .kpi-top,
+.kpi-card.kpi-rate > small {
+  color: rgba(70, 56, 93, .68);
+}
+
+.kpi-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.kpi-card > strong {
+  text-shadow: 0 1px 0 rgba(255,255,255,.45);
+}
