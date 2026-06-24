@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css?v=2">
   <link rel="stylesheet" href="site-background.css?v=2">
   <link rel="stylesheet" href="table-collapse.css?v=1">
+  <link rel="stylesheet" href="filter-layout.css?v=1">
 </head>
 <body class="dashboard-page">
   <header class="site-header dashboard-header">
@@ -43,7 +44,7 @@
           <span class="filter-icon">⌁</span>
           <span>
             <strong>Filter the data</strong>
-            <small>Refine by cohort, term and performance threshold</small>
+            <small>Refine by cohort, term, student type and level</small>
           </span>
         </div>
         <button id="resetFilters" type="button">Reset all</button>
@@ -64,17 +65,6 @@
         <label>
           <span>Level</span>
           <select id="levelFilter"></select>
-        </label>
-        <label>
-          <span>Minimum Students</span>
-          <input id="studentMinimum" type="number" min="0" value="0" inputmode="numeric">
-        </label>
-        <label>
-          <span>Minimum Pass Rate</span>
-          <div class="range-wrap">
-            <input id="rateMinimum" type="range" min="0" max="100" step="1" value="0">
-            <output id="rateMinimumOutput">0%</output>
-          </div>
         </label>
       </div>
     </section>
@@ -184,6 +174,6 @@
   </footer>
 
   <script src="data/pass-fail-data.js?v=6"></script>
-  <script src="dashboard.js?v=4"></script>
+  <script src="dashboard.js?v=5"></script>
 </body>
 </html>
