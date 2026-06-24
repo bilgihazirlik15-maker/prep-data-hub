@@ -20,9 +20,14 @@
     values.forEach(value => select.add(new Option(value, value)));
   });
 
-  const years = unique("Academic Year");
+  const years = unique("Academic Year")
+    .flatMap(year => String(year).match(/\d{4}/g) || [])
+    .map(Number)
+    .filter(Number.isFinite);
+  const startYear = Math.min(...years);
+  const endYear = Math.max(...years);
   document.querySelector("#coverageLabel").textContent =
-    years.length === 1 ? years[0] : `${years[0]} — ${years.at(-1)}`;
+    Number.isFinite(startYear) && Number.isFinite(endYear) ? `${startYear} - ${endYear}` : "—";
 
   const controls = [
     ...Object.values(filterMap),
@@ -39,6 +44,13 @@
     document.querySelector("#dimensionSelect").value = "Level";
     render();
   });
+
+  function hasActiveFilters() {
+    const hasDimensionFilter = dimensions.some(key => Boolean(filterMap[key].value));
+    const minStudents = Number(document.querySelector("#studentMinimum").value || 0);
+    const minRate = Number(document.querySelector("#rateMinimum").value || 0);
+    return hasDimensionFilter || minStudents > 0 || minRate > 0;
+  }
 
   function filteredRows() {
     const minStudents = Number(document.querySelector("#studentMinimum").value || 0);
@@ -71,13 +83,24 @@
   }
 
   function renderKpis(rows, summary) {
+    if (!hasActiveFilters()) {
+      document.querySelector("#totalStudents").textContent = "—";
+      document.querySelector("#passStudents").textContent = "—";
+      document.querySelector("#failStudents").textContent = "—";
+      document.querySelector("#passRate").textContent = "—";
+      document.querySelector("#recordCount").textContent = "Select a filter to calculate";
+      document.querySelector("#passShare").textContent = "— of selected";
+      document.querySelector("#failShare").textContent = "— of selected";
+      return;
+    }
+
     document.querySelector("#totalStudents").textContent = numberFormat.format(summary.students);
     document.querySelector("#passStudents").textContent = numberFormat.format(summary.pass);
     document.querySelector("#failStudents").textContent = numberFormat.format(summary.fail);
     document.querySelector("#passRate").textContent = percent(summary.rate);
     document.querySelector("#recordCount").textContent = `${rows.length} record${rows.length === 1 ? "" : "s"} selected`;
-    document.querySelector("#passShare").textContent = `${percent(summary.rate)} of total`;
-    document.querySelector("#failShare").textContent = `${percent(summary.students ? summary.fail / summary.students : null)} of total`;
+    document.querySelector("#passShare").textContent = `${percent(summary.rate)} of selected`;
+    document.querySelector("#failShare").textContent = `${percent(summary.students ? summary.fail / summary.students : null)} of selected`;
   }
 
   function renderDonut(summary) {
