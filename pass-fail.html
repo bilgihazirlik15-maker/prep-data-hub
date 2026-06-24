@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="site-background.css?v=2">
   <link rel="stylesheet" href="table-collapse.css?v=1">
   <link rel="stylesheet" href="filter-layout.css?v=1">
+  <link rel="stylesheet" href="kpi-colors.css?v=1">
 </head>
 <body class="dashboard-page">
   <header class="site-header dashboard-header">
@@ -70,22 +71,22 @@
     </section>
 
     <section class="kpi-grid" aria-label="Summary metrics">
-      <article class="kpi-card accent-dark">
+      <article class="kpi-card kpi-total">
         <div class="kpi-top"><span>Total students</span><i>∑</i></div>
         <strong id="totalStudents">—</strong>
         <small id="recordCount">— records</small>
       </article>
-      <article class="kpi-card">
+      <article class="kpi-card kpi-pass">
         <div class="kpi-top"><span>Pass students</span><i class="success-dot"></i></div>
         <strong id="passStudents">—</strong>
         <small id="passShare">— of total</small>
       </article>
-      <article class="kpi-card">
+      <article class="kpi-card kpi-fail">
         <div class="kpi-top"><span>Fail students</span><i class="fail-dot"></i></div>
         <strong id="failStudents">—</strong>
         <small id="failShare">— of total</small>
       </article>
-      <article class="kpi-card accent-rate">
+      <article class="kpi-card kpi-rate">
         <div class="kpi-top"><span>Pass success rate</span><i>↗</i></div>
         <strong id="passRate">—</strong>
         <small>Weighted by student count</small>
