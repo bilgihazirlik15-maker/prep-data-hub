@@ -31,40 +31,22 @@
 
   const controls = [
     ...Object.values(filterMap),
-    document.querySelector("#studentMinimum"),
-    document.querySelector("#rateMinimum"),
     document.querySelector("#dimensionSelect")
   ];
 
   controls.forEach(control => control.addEventListener("input", render));
   document.querySelector("#resetFilters").addEventListener("click", () => {
     Object.values(filterMap).forEach(select => { select.value = ""; });
-    document.querySelector("#studentMinimum").value = 0;
-    document.querySelector("#rateMinimum").value = 0;
     document.querySelector("#dimensionSelect").value = "Level";
     render();
   });
 
   function hasActiveFilters() {
-    const hasDimensionFilter = dimensions.some(key => Boolean(filterMap[key].value));
-    const minStudents = Number(document.querySelector("#studentMinimum").value || 0);
-    const minRate = Number(document.querySelector("#rateMinimum").value || 0);
-    return hasDimensionFilter || minStudents > 0 || minRate > 0;
+    return dimensions.some(key => Boolean(filterMap[key].value));
   }
 
   function filteredRows() {
-    const minStudents = Number(document.querySelector("#studentMinimum").value || 0);
-    const minRate = Number(document.querySelector("#rateMinimum").value || 0) / 100;
-    return data.filter(row => {
-      const dimensionsMatch = dimensions.every(key => !filterMap[key].value || row[key] === filterMap[key].value);
-      const studentsMatch = Number.isFinite(row["Number of Sts"])
-        ? row["Number of Sts"] >= minStudents
-        : minStudents === 0;
-      const rateMatch = Number.isFinite(row["Pass Success Rate"])
-        ? row["Pass Success Rate"] >= minRate
-        : minRate === 0;
-      return dimensionsMatch && studentsMatch && rateMatch;
-    });
+    return data.filter(row => dimensions.every(key => !filterMap[key].value || row[key] === filterMap[key].value));
   }
 
   function getSummary(rows) {
@@ -170,7 +152,6 @@
   function render() {
     const rows = filteredRows();
     const summary = getSummary(rows);
-    document.querySelector("#rateMinimumOutput").textContent = `${document.querySelector("#rateMinimum").value}%`;
     renderKpis(rows, summary);
     renderDonut(summary);
     renderBars(rows);
