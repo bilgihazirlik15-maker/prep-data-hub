@@ -42,6 +42,13 @@
     return data.filter(row => dimensions.every(key => !filterMap[key].value || row[key] === filterMap[key].value));
   }
 
+  function comparisonRows(dimension) {
+    return data.filter(row => dimensions.every(key => {
+      if (key === dimension) return true;
+      return !filterMap[key].value || row[key] === filterMap[key].value;
+    }));
+  }
+
   function getSummary(rows) {
     // Prefer non-overlapping aggregate rows when present to prevent double-counting.
     let summaryRows = rows.filter(row => row["Type of Students"] === "BOTH" && row.Level === "ALL");
@@ -86,12 +93,13 @@
     document.querySelector("#legendFail").textContent = numberFormat.format(summary.fail);
   }
 
-  function renderBars(rows) {
+  function renderBars() {
     const dimension = document.querySelector("#dimensionSelect").value;
     document.querySelector("#dimensionTitle").textContent = dimension.toLowerCase();
     const groups = new Map();
+    const chartRows = comparisonRows(dimension);
 
-    rows.filter(row => {
+    chartRows.filter(row => {
       if (dimension !== "Level" && row.Level === "ALL") return false;
       if (dimension !== "Type of Students" && row["Type of Students"] === "BOTH") return false;
       return true;
@@ -147,7 +155,7 @@
     const summary = getSummary(rows);
     renderKpis(rows, summary);
     renderDonut(summary);
-    renderBars(rows);
+    renderBars();
     renderTable(rows);
   }
 
