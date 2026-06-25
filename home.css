@@ -242,6 +242,11 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-soft);
   font-size: 10px;
 }
+.designer-credit {
+  font-size: 9px;
+  letter-spacing: .04em;
+  opacity: .74;
+}
 @media (prefers-reduced-motion: reduce) {
   .report-card, .report-card::before, .report-card::after, .card-icon, .card-copy, .card-arrow { transition: none; }
   .report-card:hover, .report-card.featured:hover, .report-card:hover .card-icon, .report-card:hover .card-copy, .report-card.featured:hover .card-arrow { transform: none; }
