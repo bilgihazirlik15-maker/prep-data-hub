@@ -101,7 +101,7 @@
 
     chartRows.filter(row => {
       if (dimension !== "Level" && row.Level === "ALL") return false;
-      if (dimension !== "Type of Students" && row["Type of Students"] === "BOTH") return false;
+      if (row["Type of Students"] === "BOTH") return false;
       return true;
     }).forEach(row => {
       const key = row[dimension];
