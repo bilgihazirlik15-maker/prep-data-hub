@@ -86,6 +86,14 @@
   }
 
   function renderDonut(summary) {
+    if (!hasActiveFilters()) {
+      document.querySelector("#donutChart").style.setProperty("--rate", "0deg");
+      document.querySelector("#donutRate").textContent = "—";
+      document.querySelector("#legendPass").textContent = "—";
+      document.querySelector("#legendFail").textContent = "—";
+      return;
+    }
+
     const rate = Number.isFinite(summary.rate) ? summary.rate : 0;
     document.querySelector("#donutChart").style.setProperty("--rate", `${rate * 360}deg`);
     document.querySelector("#donutRate").textContent = percent(summary.rate);
@@ -96,6 +104,12 @@
   function renderBars() {
     const dimension = document.querySelector("#dimensionSelect").value;
     document.querySelector("#dimensionTitle").textContent = dimension.toLowerCase();
+    const chart = document.querySelector("#barChart");
+    if (!hasActiveFilters()) {
+      chart.innerHTML = `<div class="chart-empty">Select a filter to compare outcomes.</div>`;
+      return;
+    }
+
     const groups = new Map();
     const chartRows = comparisonRows(dimension);
 
@@ -116,7 +130,6 @@
       rate: values.total ? values.pass / values.total : 0
     })).sort((a, b) => a.label.localeCompare(b.label, undefined, { numeric: true }));
 
-    const chart = document.querySelector("#barChart");
     if (!entries.length) {
       chart.innerHTML = `<div class="chart-empty">No chart data for this selection.</div>`;
       return;
